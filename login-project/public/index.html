@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <!-- formulaire inscription -->
+    <div id="register-container">
+
+        <form id="register-form">
+            <h2 id="title">Inscription</h2>
+            <input type="email" id="register-email" placeholder="Email" required> 
+            <input type="password" id="register-password" placeholder="Mot de passe" required>
+            <button type="submit">S'inscrire</button>
+            <p>Déjà un compte ?<a href="#" id="switch-to-login">Connectez-vous</a></p>
+        </form>
+
+        
+    </div>
+
+    <!-- formulaire de connexion -->
+     <div id="login-container" style="display: none;">
+    
+        <form id="login-form">
+            <h2 id="title">Connexion</h2>
+            <input type="email" id="login-email" placeholder="Email" required> 
+            <input type="text" id="login-password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+            <p>Pas de compte ?<a href="#" id="switch-to-register">Inscrivez-vous</a></p>
+        </form>
+
+        
+    </div>
+    <script src="inc/script.js"></script>
+</body>
+</html>
