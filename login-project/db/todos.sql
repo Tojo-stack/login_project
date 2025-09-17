@@ -1,0 +1,7 @@
+CREATE TABLE if NOT EXISTS todos (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    task TEXT not null,
+    done BOOLEAN DEFAULT FALSE,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
