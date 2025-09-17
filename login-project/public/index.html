@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Login</title>
+    <title>Register/Login</title>
 </head>
 <body>
     <!-- formulaire inscription -->
     <div id="register-container">
 
-        <form id="register-form">
+        <form action="/register" method="post" id="register-form">
             <h2 id="title">Inscription</h2>
             <input type="email" id="register-email" placeholder="Email" required> 
             <input type="password" id="register-password" placeholder="Mot de passe" required>
@@ -24,10 +24,10 @@
     <!-- formulaire de connexion -->
      <div id="login-container" style="display: none;">
     
-        <form id="login-form">
+        <form action="/login" methode="POST" id="login-form">
             <h2 id="title">Connexion</h2>
-            <input type="email" id="login-email" placeholder="Email" required> 
-            <input type="text" id="login-password" placeholder="Mot de passe" required>
+            <input type="email" name="email" id="login-email" placeholder="Email" required> 
+            <input type="password" name="password" id="login-password" placeholder="Mot de passe" required>
             <button type="submit">Se connecter</button>
             <p>Pas de compte ?<a href="#" id="switch-to-register">Inscrivez-vous</a></p>
         </form>
