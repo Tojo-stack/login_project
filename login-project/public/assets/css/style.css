@@ -32,9 +32,27 @@ button{
     padding: 10px 20px;
     cursor: pointer;
 }
+button:hover{
+    color: #f0f2f5;
+    background-color: #333;
+    transition: 0.3s;
+    transform: scale(1.07);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
 
 #message{
     margin-top: 15px;
     color: red;
 }
 
+/* Pour To_Do */
+.welcomeBtn{
+    position: fixed;
+    top: 30px;
+    left: 20px;
+}
+.title{
+    position: fixed;
+    top: 10px;
+}
