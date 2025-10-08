@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
@@ -13,8 +14,8 @@
         </a>
         <h1 class="title">Bienvenue dans ta To_Do List</h1>
     </header>
-    <form action="/todos" method="post">
-        <input type="text" name="task" placeholder="Nouvelle tâche" required>
+    <form action="/todos" method="post" id="add-form">
+        <input type="text" name="task" id="task-input" placeholder="Nouvelle tâche" required>
         <button type="submit">Ajouter</button>
     </form>
 

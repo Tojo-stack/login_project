@@ -17,7 +17,7 @@ const port = 3000
 // connexion à PostgreSQL
 const {Pool} = require('pg')
 require ('dotenv').config()
-console.log('Mots de passe:', process.env.DB_PASSWORD)
+// console.log('Mots de passe:', process.env.DB_PASSWORD)
 
 const pool = new Pool({
     user: process.env.DB_USER,
@@ -125,12 +125,12 @@ app.post('/login', async (req, res)=>{
     // Afficher toutes les tâches de l'utilisateur connecté
     
     app.get('/todos', async (req, res) =>{
-        console.log('Session actuelle: ', req.session)
+        
         if (!req.session.user){
-            console.log('Utilisateur non connecté')
+            
             return res.status(401).json({message: 'Non connecté'})
         }
-        const {userId} = req.session.user.id
+        const userId = req.session.user.id
         try{
             const result = await pool.query('SELECT * FROM todos WHERE user_id=$1',[userId])
             res.json(result.rows)
@@ -144,12 +144,14 @@ app.post('/login', async (req, res)=>{
     // Ajouter une tâche
     app.post('/todos', async(req, res)=>{
         if (!req.session.user)
-            return res.redirect('/')
+            return res.status(401).json({ message: 'Non connecté' })
+
         const userId = req.session.user.id
         const { task } = req.body
+
         try{
-            await pool.query('INSERT INTO todos (user_id, task) VALUES ($1, $2)', [userId, task])
-            res.redirect('/home')
+            const result = await pool.query('INSERT INTO todos (user_id, task) VALUES ($1, $2) RETURNING * ', [userId, task])
+            res.json(result.rows[0])
         } catch (err) {
             console.error(err)
             res.status(500).send('Erreur serveur')
@@ -160,8 +162,8 @@ app.post('/login', async (req, res)=>{
     app.post('/todos/:id/done', async (req, res) => {
         const{id} = req.params
         try{
-            await pool.query('UPTDATE todos SET done = true WHERE id=$1', [id])
-            res.redirect('/home')
+            result=await pool.query('UPDATE todos SET done = true WHERE id=$1', [id])
+            res.json(result.rows[0])
         }catch(err){
             console.error(err)
             res.status(500).send('Erreur serveur')
@@ -173,7 +175,7 @@ app.post('/login', async (req, res)=>{
         const  { id } = req.params
         try{
             await pool.query('DELETE FROM todos WHERE id = $1', [id])
-            res.redirect('/home')
+            res.json({ success: true, id })
         }catch(err){
             console.error(err);
             res.status(500).send('Erreur serveur');
