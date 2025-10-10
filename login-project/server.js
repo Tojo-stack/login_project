@@ -15,7 +15,8 @@ const port = 3000
 
 
 // connexion à PostgreSQL
-const {Pool} = require('pg')
+const {Pool} = require('pg');
+const e = require('cors');
 require ('dotenv').config()
 // console.log('Mots de passe:', process.env.DB_PASSWORD)
 
@@ -96,7 +97,7 @@ app.post('/register', async (req, res) =>{
         console.error(err)
         res.status(500).json({message: 'Erreur serveur/ utilisateur existe peut-être'})
     }
-    console.log("requête inscription reçue: ", email, password)
+    console.log(`requête inscription reçue. email: ${email}, mdp: ${password}`)
 })
 
 // Login
