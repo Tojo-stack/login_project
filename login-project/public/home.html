@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>Bienvenue sur la page d'accueil</h1>
-    <a href="/logout"><button>Déconnexion</button></a>
+    <header>
+        <a href="/logout">
+            <button onclick="window.location.href='/logout'" class="welcomeBtn">Déconnexion</button>
+        </a>
+        <h1 class="title">Bienvenue dans ta To_Do List</h1>
+    </header>
+    <form action="/todos" method="post" id="add-form">
+        <input type="text" name="task" id="task-input" placeholder="Nouvelle tâche" required>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <ul id="todo-list"></ul>
+<script src="inc/todos.js"></script>
 </body>
 </html>
